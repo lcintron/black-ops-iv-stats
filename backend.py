@@ -10,6 +10,10 @@ players = {
     "Orlando": "Ix BiG TyMe xI"
 }
 
+statschanged = False
+olddata = open("data.json").read()
+oldjson = json.loads(olddata)
+
 content = "{ \"lastupdated\":\""+str(datetime.datetime.now())+"\", \"players\":["
 for index,player in enumerate(players):
     gamertag = players[player].replace(" ", "%20")
@@ -26,5 +30,10 @@ for index,player in enumerate(players):
             content= content+","
 
 content = content+"]}"
-f = open ("data.json", "w")
-f.write(content)
+
+newjson = json.loads(content)
+statschanged = newjson["players"] == oldjson["players"]
+
+if statschanged:
+    f = open ("data.json", "w")
+    f.write(content)
