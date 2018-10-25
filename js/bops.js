@@ -56,7 +56,7 @@ function AppViewModel() {
             self.sortPlayers();
 
             //set interval 
-            let int = setInterval(self.requestUpdatePlayers, 300000);
+            let int = setInterval(self.requestUpdatePlayers, 30000);
             self.lastupdated("Last updated on "+json.lastupdated);
             console.log('Players added!');
         }
