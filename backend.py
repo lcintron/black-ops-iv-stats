@@ -7,7 +7,10 @@ players = {
     "Luis":"onecintron",
     "Andres": "andresblanco813",
     "Leandro": "mighty dro",
-    "Orlando": "Ix BiG TyMe xI"
+    "Orlando": "Ix BiG TyMe xI",
+    "-": "ADIDAS1505",
+    "-": "ByteRocket",
+    "Eduardo": "edtron08"
 }
 
 statschanged = False
@@ -32,7 +35,7 @@ for index,player in enumerate(players):
 content = content+"]}"
 
 newjson = json.loads(content)
-statschanged = newjson["players"] == oldjson["players"]
+statschanged = newjson["players"] != oldjson["players"]
 
 if statschanged:
     f = open ("data.json", "w")
