@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>BOps 4 Stats</title>
+    <link rel="stylesheet" href="bops.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/knockout-3.4.2.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-12">
+                <table class="table table-stripped table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Player</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Prestige</th>
+                            <th scope="col">Kills</th>
+                            <th scope="col">Deaths</th>
+                            <th scope="col">KD</th>
+                            <th scope="col">Games Played</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: players">
+                        <tr>
+                            <td><span data-bind="text: ($index() +1)"></span></td>
+                            <td><span data-bind="text:name"></span><br/> (<span data-bind="text: gamertag"></span>)</td>
+                            <td><span data-bind="text:level"></span></td>
+                            <td><span data-bind="text:prestige"></span></td>
+                            <td><span data-bind="text:kills"></span></td>
+                            <td><span data-bind="text:deaths"></span></td>
+                            <td><span data-bind="text:kd"></span></td>
+                            <td><span data-bind="text:totalgames"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="">
+                    <span data-bind="text:lastupdated" style="color:white"></span>
+            </div>
+        </div>
+    </div>
+    <script src="js/bops.js"></script>
+</body>
+
+</html>
