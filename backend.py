@@ -28,4 +28,3 @@ for index,player in enumerate(players):
 content = content+"]}"
 f = open ("data.json", "w")
 f.write(content)
-print content
