@@ -9,8 +9,7 @@ players = {
     "Leandro": "mighty dro",
     "Orlando": "Ix BiG TyMe xI",
     "-": "ADIDAS1505",
-    "-": "ByteRocket",
-    "Eduardo": "edtron08"
+    "-": "ByteRocket"
 }
 
 statschanged = False
