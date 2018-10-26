@@ -11,3 +11,7 @@ body{
     margin: auto;
     width: 50% !important; 
  }
+
+ .developed {
+     font-size: 0.9em;
+ }
