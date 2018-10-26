@@ -6,3 +6,8 @@ body{
 .container{
     margin-top:200px;
 }
+
+.table {
+    margin: auto;
+    width: 50% !important; 
+ }

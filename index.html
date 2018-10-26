@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,34 +14,36 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row justify-content-md-center">
-            <div class="col-md-8 col-sm-12">
-                <table class="table table-responsive table-stripped table-hover table-dark stats">
-                    <thead>
-                        <tr>
-                            <th scope="col">Rank</th>
-                            <th scope="col">Player</th>
-                            <th scope="col">Level</th>
-                            <th scope="col">Prestige</th>
-                            <th scope="col">Kills</th>
-                            <th scope="col">Deaths</th>
-                            <th scope="col">KD</th>
-                            <th scope="col">Games</th>
-                        </tr>
-                    </thead>
-                    <tbody data-bind="foreach: players">
-                        <tr>
-                            <td><span data-bind="text: ($index() +1)"></span></td>
-                            <td><span data-bind="text:name"></span><br /> (<span data-bind="text: gamertag"></span>)</td>
-                            <td><span data-bind="text:level"></span></td>
-                            <td><span data-bind="text:prestige"></span></td>
-                            <td><span data-bind="text:kills"></span></td>
-                            <td><span data-bind="text:deaths"></span></td>
-                            <td><span data-bind="text:kd"></span></td>
-                            <td><span data-bind="text:totalgames"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-stripped table-hover table-dark stats">
+                        <thead>
+                            <tr>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Player</th>
+                                <th scope="col">Level</th>
+                                <th scope="col">Prestige</th>
+                                <th scope="col">Kills</th>
+                                <th scope="col">Deaths</th>
+                                <th scope="col">KD</th>
+                                <th scope="col">Games</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: players">
+                            <tr>
+                                <td><span data-bind="text: ($index() +1)"></span></td>
+                                <td><span data-bind="text:name"></span><br /> (<span data-bind="text: gamertag"></span>)</td>
+                                <td><span data-bind="text:level"></span></td>
+                                <td><span data-bind="text:prestige"></span></td>
+                                <td><span data-bind="text:kills"></span></td>
+                                <td><span data-bind="text:deaths"></span></td>
+                                <td><span data-bind="text:kd"></span></td>
+                                <td><span data-bind="text:totalgames"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="row justify-content-md-center">
@@ -51,4 +54,5 @@
     </div>
     <script src="js/bops.js"></script>
 </body>
+
 </html>
