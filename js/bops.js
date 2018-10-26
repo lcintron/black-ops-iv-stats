@@ -117,5 +117,6 @@ function AppViewModel() {
 var bops = {
     vm: new AppViewModel()
 };
+
 // Activates knockout.js
 ko.applyBindings(bops.vm);

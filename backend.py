@@ -41,3 +41,5 @@ if statschanged:
     print(str(datetime.datetime.now()) +": Data changed")
     f = open ("data.json", "w")
     f.write(content)
+else:
+    print(str(datetime.datetime.now()) +": Data unchanged")
