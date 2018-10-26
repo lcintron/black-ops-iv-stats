@@ -8,8 +8,8 @@ players = {
     "Andres": "andresblanco813",
     "Leandro": "mighty dro",
     "Orlando": "Ix BiG TyMe xI",
-    "-": "ADIDAS1505",
-    "-": "ByteRocket"
+    "-0-": "ADIDAS1505",
+    "-1-": "ByteRocket"
 }
 
 statschanged = False
