@@ -1,7 +1,9 @@
 <html>
-
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Black Ops 4 Stats</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="bops.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -29,7 +31,7 @@
                     <tbody data-bind="foreach: players">
                         <tr>
                             <td><span data-bind="text: ($index() +1)"></span></td>
-                            <td><span data-bind="text:name"></span><br/> (<span data-bind="text: gamertag"></span>)</td>
+                            <td><span data-bind="text:name"></span><br /> (<span data-bind="text: gamertag"></span>)</td>
                             <td><span data-bind="text:level"></span></td>
                             <td><span data-bind="text:prestige"></span></td>
                             <td><span data-bind="text:kills"></span></td>
@@ -43,11 +45,10 @@
         </div>
         <div class="row justify-content-md-center">
             <div class="col-12" style="text-align:center">
-                    <span data-bind="text:lastupdated" style="color:white;"></span>
+                <span data-bind="text:lastupdated" style="color:white;"></span>
             </div>
         </div>
     </div>
     <script src="js/bops.js"></script>
 </body>
-
 </html>
