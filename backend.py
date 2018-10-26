@@ -27,6 +27,7 @@ for index,player in enumerate(players):
         statsresponse = requests.get(statsurl)
         data = statsresponse.json()
         data["name"] = player
+        data.pop("cache", None)
         content = content+json.dumps(data)
         if index != (len(players)-1):
             content= content+","
@@ -34,8 +35,9 @@ for index,player in enumerate(players):
 content = content+"]}"
 
 newjson = json.loads(content)
-statschanged = newjson["players"] != oldjson["players"]
+statschanged = json.dumps(newjson["players"]) != json.dumps(oldjson["players"])
 
 if statschanged:
+    print(str(datetime.datetime.now()) +": Data changed")
     f = open ("data.json", "w")
     f.write(content)
