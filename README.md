@@ -7,6 +7,6 @@ Web display for stats from COD Black Ops. Site can be hosted in its own server o
 # Update
 
 # Access
-The sample site can be accessed at: https://lcintron.github.io/bopsstats/
+The sample site can be accessed at: https://lcintron.github.io/black-ops-iv-stats
 
 # License
