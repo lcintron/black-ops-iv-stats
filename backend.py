@@ -8,8 +8,12 @@ players = {
     "Andres": "andresblanco813",
     "Leandro": "mighty dro",
     "Orlando": "Ix BiG TyMe xI",
-    "-0-": "ADIDAS1505",
-    "-1-": "ByteRocket"
+    "Tom": "ADIDAS1505"
+    ,"Robert": "ByteRocket"
+    ,"Dan": "abnormaltag"
+    ,"Jordan": "turbotwinkies"
+    ,"Kayla": "Bigbootyjudy"
+    ,"Will": "youknowimill"
 }
 
 statschanged = False

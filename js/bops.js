@@ -79,7 +79,8 @@ function AppViewModel() {
         if (json && json.players) {
             let players = json.players;
             players.forEach(function (p) {
-                self.addPlayer(p);
+                if(p.username && p.platform)
+                    self.addPlayer(p);
             });
 
             //sort after adding all players
@@ -102,7 +103,7 @@ function AppViewModel() {
     self.updatePlayer = function (p) {
         for (i = 0; i < self.players().length; i++) {
             let player = self.players()[i];
-            if (player.id === p.user.id) {
+            if (player.id === p.username) {
                 player.name(p.name);
                 player.gamertag(p.username);
                 player.avataruri("");
