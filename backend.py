@@ -11,9 +11,8 @@ players = {
     "Tom": "ADIDAS1505"
     ,"Robert": "ByteRocket"
     ,"Dan": "abnormaltag"
-    ,"Jordan": "turbotwinkies"
-    ,"Kayla": "Bigbootyjudy"
-    ,"Will": "youknowimill"
+    ,"Kayla": "BigBootyJudy124"
+    ,"Will": "You Know IM ILL"
 }
 
 statschanged = False
