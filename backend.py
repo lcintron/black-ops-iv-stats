@@ -19,18 +19,16 @@ oldjson = json.loads(olddata)
 content = "{ \"lastupdated\":\""+str(datetime.datetime.now())+"\", \"players\":["
 for index,player in enumerate(players):
     gamertag = players[player].replace(" ", "%20")
-    validateurl = "https://bo4tracker.com/api/validate/bo4/"+gamertag+"/xbl"
-    statsurl = "https://bo4tracker.com/api/stats/bo4/"+gamertag+"/xbl"
-    validateresponse = requests.get(validateurl)
-    validate = validateresponse.json()
-    if validate["success"]:
-        statsresponse = requests.get(statsurl)
+    statsurl ="https://my.callofduty.com/api/papi-client/crm/cod/v2/title/bo4/platform/xbl/gamer/"+gamertag+"/profile/" 
+    statsresponse = requests.get(statsurl)
+    if statsresponse.ok:
         data = statsresponse.json()
-        data["name"] = player
-        data.pop("cache", None)
-        content = content+json.dumps(data)
-        if index != (len(players)-1):
-            content= content+","
+        if data["status"] == "success":
+            data = data.pop("data")
+            data["name"] = player
+            content = content+json.dumps(data)
+            if index != (len(players)-1):
+                content= content+","
 
 content = content+"]}"
 

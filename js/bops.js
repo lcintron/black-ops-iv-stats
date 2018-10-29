@@ -2,27 +2,27 @@
 function timeSince(date) {
 
     var seconds = Math.floor((new Date() - date) / 1000);
-  
+
     var interval = Math.floor(seconds / 31536000);
-  
+
     if (interval > 1) {
-      return interval + " years ago";
+        return interval + " years ago";
     }
     interval = Math.floor(seconds / 2592000);
     if (interval > 1) {
-      return interval + " months ago";
+        return interval + " months ago";
     }
     interval = Math.floor(seconds / 86400);
     if (interval > 1) {
-      return interval + " days ago";
+        return interval + " days ago";
     }
     interval = Math.floor(seconds / 3600);
     if (interval > 1) {
-      return interval + " hours ago";
+        return interval + " hours ago";
     }
     interval = Math.floor(seconds / 60);
     if (interval > 1) {
-      return interval + " minutes ago";
+        return interval + " minutes ago";
     }
     return Math.floor(seconds) + " seconds ago";
 }
@@ -58,20 +58,21 @@ function AppViewModel() {
     self.lastupdated = ko.observable("--");
     self.addPlayer = function (p) {
         let player = new Player();
-        player.id = p.user.id;
+        player.id = p.username;
         player.name(p.name);
-        player.gamertag(p.user.username);
-        player.avataruri(p.user.avatar);
-        player.kills(p.stats.kills);
-        player.deaths(p.stats.deaths);
-        player.ekia(p.stats.ekia);
-        player.suicides(p.stats.suicides);
-        player.level(p.stats.level);
-        player.prestige(p.stats.prestige);
-        player.totalgames(p.stats.gamesplayed);
-        player.timeplayed(p.stats.timeplayed);
-        player.totalshots(p.stats.totalshots);
-        player.longestkillstreak(p.stats.longestkillstreak);
+        player.gamertag(p.username);
+        player.avataruri("");
+        let stats = p.mp.lifetime.all;
+        player.kills(stats.kills);
+        player.deaths(stats.deaths);
+        player.ekia(stats.ekia);
+        player.suicides(stats.suicides);
+        player.level(p.mp.level);
+        player.prestige(p.mp.prestige);
+        player.totalgames(stats.totalGamesPlayed);
+        player.timeplayed(stats.timePlayedTotal);
+        player.totalshots(stats.totalShots);
+        player.longestkillstreak(stats.longestKillstreak);
         self.players.push(player);
     };
     self.addPlayers = function (json) {
@@ -86,7 +87,7 @@ function AppViewModel() {
 
             //set interval 
             let int = setInterval(self.requestUpdatePlayers, 30000);
-            self.lastupdated("Last updated "+timeSince(new Date(json.lastupdated)));
+            self.lastupdated("Last updated " + timeSince(new Date(json.lastupdated)));
             console.log('Players added!');
         }
     };
@@ -103,18 +104,19 @@ function AppViewModel() {
             let player = self.players()[i];
             if (player.id === p.user.id) {
                 player.name(p.name);
-                player.gamertag(p.user.username);
-                player.avataruri(p.user.avatar);
-                player.kills(p.stats.kills);
-                player.deaths(p.stats.deaths);
-                player.ekia(p.stats.ekia);
-                player.suicides(p.stats.suicides);
-                player.level(p.stats.level);
-                player.prestige(p.stats.prestige);
-                player.totalgames(p.stats.gamesplayed);
-                player.timeplayed(p.stats.timeplayed);
-                player.totalshots(p.stats.totalshots);
-                player.longestkillstreak(p.stats.longestkillstreak);
+                player.gamertag(p.username);
+                player.avataruri("");
+                let stats = p.mp.lifetime.all;
+                player.kills(stats.kills);
+                player.deaths(stats.deaths);
+                player.ekia(stats.ekia);
+                player.suicides(stats.suicides);
+                player.level(p.mp.level);
+                player.prestige(p.mp.prestige);
+                player.totalgames(stats.totalGamesPlayed);
+                player.timeplayed(stats.timePlayedTotal);
+                player.totalshots(stats.totalShots);
+                player.longestkillstreak(stats.longestKillstreak);
                 return;
             }
         };
@@ -129,7 +131,7 @@ function AppViewModel() {
 
             //sort after updating players
             self.sortPlayers();
-            self.lastupdated("Last updated "+timeSince(new Date(json.lastupdated)));
+            self.lastupdated("Last updated " + timeSince(new Date(json.lastupdated)));
             console.log('Players updated!');
         }
 
