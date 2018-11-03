@@ -36,6 +36,10 @@ function Player() {
     self.avataruri = ko.observable('');
     self.deaths = ko.observable(0);
     self.ekia = ko.observable(0);
+    self.ekiadRatio = ko.observable(0);
+    self.weeklyEkiadRatio = ko.observable(0);
+    self.hctdmEkiadRatio = ko.observable(0);
+    self.weeklyhctdmEkiadRatio = ko.observable();
     self.suicides = ko.observable(0);
     self.rank = ko.observable();
     self.level = ko.observable();
@@ -44,12 +48,12 @@ function Player() {
     self.timeplayed = ko.observable(0)
     self.totalshots = ko.observable(0);
     self.longestkillstreak = ko.observable(0);
-    self.kd = ko.pureComputed(function () {
-        if (self.deaths() === 0)
-            return self.kills();
+    // self.kd = ko.pureComputed(function () {
+    //     if (self.deaths() === 0)
+    //         return self.kills();
 
-        return (self.kills() / self.deaths()).toFixed(2);
-    });
+    //     return (self.kills() / self.deaths()).toFixed(2);
+    // });
 }
 
 function AppViewModel() {
@@ -73,13 +77,18 @@ function AppViewModel() {
         player.timeplayed(stats.timePlayedTotal);
         player.totalshots(stats.totalShots);
         player.longestkillstreak(stats.longestKillstreak);
+        player.ekiadRatio(stats.ekiadRatio.toFixed(2));
+        player.weeklyEkiadRatio(p.mp.weekly.all.ekiadRatio? p.mp.weekly.all.ekiadRatio.toFixed(2):0);
+                
+        if (p.mp.weekly && p.mp.weekly.mode.tdm_hc)
+            player.weeklyhctdmEkiadRatio(p.mp.weekly.mode.tdm_hc.ekiadRatio.toFixed(2));
         self.players.push(player);
     };
     self.addPlayers = function (json) {
         if (json && json.players) {
             let players = json.players;
             players.forEach(function (p) {
-                if(p.username && p.platform)
+                if (p.username && p.platform)
                     self.addPlayer(p);
             });
 
@@ -95,7 +104,7 @@ function AppViewModel() {
     self.sortPlayers = function () {
         if (self.players() && self.players().length > 0) {
             self.players.sort(function (left, right) {
-                return left.kd() === right.kd() ? 0 : (left.kd() < right.kd() ? 1 : -1);
+                return left.ekiadRatio() === right.ekiadRatio() ? 0 : (left.ekiadRatio() < right.ekiadRatio() ? 1 : -1);
             });
         }
     }
@@ -118,6 +127,11 @@ function AppViewModel() {
                 player.timeplayed(stats.timePlayedTotal);
                 player.totalshots(stats.totalShots);
                 player.longestkillstreak(stats.longestKillstreak);
+                player.ekiadRatio(stats.ekiadRatio.toFixed(2));
+                player.weeklyEkiadRatio(p.mp.weekly.all.ekiadRatio? p.mp.weekly.all.ekiadRatio.toFixed(2):0);
+                
+                if (p.mp.weekly && p.mp.weekly.mode.tdm_hc)
+                    player.weeklyhctdmEkiadRatio(p.mp.weekly.mode.tdm_hc.ekiadRatio.toFixed(2));
                 return;
             }
         };
